@@ -1,15 +1,4 @@
 export const useApi = () => {
-    const token = useToken()
-    const client_id = "137883974894-647favgip80lb92ghc7r7stoqadojfjp.apps.googleusercontent.com"
-    const config = {
-        client_id,
-        scope: [
-            'https://www.googleapis.com/auth/calendar',
-            'https://www.googleapis.com/auth/calendar.readonly',
-        ],
-        ux_mode: 'popup',
-    }
-    let status:string = "no"
     const getEvents = async (calendar:string):Promise<Array<Event>> => {
         const repMax = 10;
         const baseUrl = `https://www.googleapis.com/calendar/v3/calendars/`+calendar+`/events?`
@@ -48,9 +37,12 @@ export const useApi = () => {
 
         return events
     }
-
     return {
-        status,
         getEvents,
     }
+}
+
+export const api = {
+    a: 1,
+    b: 2,
 }

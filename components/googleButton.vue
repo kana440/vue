@@ -1,16 +1,14 @@
 <script lang="ts" setup>
-import CryptoJS from 'crypto-js';
-import 'google.accounts';
-
+import CryptoJS from 'crypto-js'
+const config= useRuntimeConfig()
 const token = useToken()
-
 onMounted(async()=>{
     let localToken  = localStorage.getItem("tokenEncrypted")    
     if(!localToken){
         try {
             const tokenResponse:google.accounts.oauth2.TokenResponse = await new Promise((resolve,reject)=>{
                 const tokenClient = google.accounts.oauth2.initTokenClient({
-                    client_id: "137883974894-647favgip80lb92ghc7r7stoqadojfjp.apps.googleusercontent.com",
+                    client_id: config.client_id,
                     scope: 'https://www.googleapis.com/auth/calendar.readonly',
                     callback: (result) => resolve(result),
                     prompt: 'consent',

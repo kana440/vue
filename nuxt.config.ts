@@ -23,5 +23,10 @@ export default defineNuxtConfig({
                 {src: "https://accounts.google.com/gsi/client"},
             ]
         }
-    }
+    },
+    runtimeConfig : {
+        public:{
+            client_id: process.env.CLIENT_ID,
+        },
+    },
 })

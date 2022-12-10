@@ -10,10 +10,10 @@
   "devDependencies": {
     "@mdi/js": "^7.0.96",
     "@types/crypto-js": "^4.1.1",
-    "@types/google.accounts": "^0.0.4",
     "nuxt": "3.0.0"
   },
   "dependencies": {
+    "@types/google.accounts": "^0.0.4",
     "crypto-js": "^4.1.1",
     "sass": "^1.56.2",
     "vuetify": "^3.0.4"
