@@ -6,7 +6,6 @@ const props = defineProps({
 
 </script>
 <template>
-<v-app><v-container>
 <v-form>
     <div v-for="item in items">
         <v-row>
@@ -20,5 +19,4 @@ const props = defineProps({
         </v-row>
     </div>
 </v-form>
-</v-container></v-app>
 </template>

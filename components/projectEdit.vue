@@ -12,7 +12,6 @@ const props = defineProps({
 </script>
 
 <template>
-<v-app><v-container>
 <v-form>
     <v-row>
         <v-text-field
@@ -21,5 +20,4 @@ const props = defineProps({
         </v-text-field>
     </v-row>
 </v-form>
-</v-container></v-app>
 </template>
