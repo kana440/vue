@@ -29,4 +29,20 @@ export default defineNuxtConfig({
             client_id: process.env.CLIENT_ID,
         },
     },
+    modules: [
+        [
+            '@pinia/nuxt',
+            {
+                autoImports: ['defineStore']
+            }
+        ]
+    ],
+    alias: {
+        pinia: '/node_modules/@pinia/nuxt/node_modules/pinia/dist/pinia.mjs',
+    },
+    imports: {
+        dirs: [
+            'store'
+        ],
+    },
 })

@@ -2,6 +2,6 @@
   // https://nuxt.com/docs/guide/concepts/typescript
   "extends": "./.nuxt/tsconfig.json",
   "compilerOptions": {
-    "types": ["google.accounts"]
+    "types": ["google.accounts","@pinia/nuxt"]
   }
 }

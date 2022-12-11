@@ -1,19 +1,18 @@
 <template>
   <v-app>
-    <google-button></google-button>
-    <v-btn @click="request">req</v-btn>
-    <project-edit :project="project"></project-edit>
-    <project-edit :project="project"></project-edit>
-    <div>aa</div>
+    <v-container>
+      <project-edit
+        :="{ project } "
+        @change="onChange"
+      ></project-edit>
+    </v-container>
   </v-app>
 </template>
 
 <script lang="ts" setup>
-const mock= useMock()
-const project = mock.project
-const token = useToken()
-const api = useApi()
-const request = async() => {
-  console.log(await api.getEvents("primary"))
+const { project } = useMock()
+const onChange = ( updatedProject:Project ) => {
+  console.log("oya")
+  console.log(updatedProject)
 }
 </script>

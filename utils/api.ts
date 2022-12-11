@@ -41,8 +41,3 @@ export const useApi = () => {
         getEvents,
     }
 }
-
-export const api = {
-    a: 1,
-    b: 2,
-}
