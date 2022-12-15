@@ -27,6 +27,7 @@ export default defineNuxtConfig({
     runtimeConfig : {
         public:{
             client_id: process.env.CLIENT_ID,
+            encryptKey: process.env.ENCRYPT_KEY,
         },
     },
     modules: [
@@ -42,7 +43,7 @@ export default defineNuxtConfig({
     },
     imports: {
         dirs: [
-            'store'
+            'stores'
         ],
     },
 })

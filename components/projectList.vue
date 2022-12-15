@@ -1,22 +1,59 @@
 <script lang="ts" setup>
-import { mdiCircle } from '@mdi/js'
-const props = defineProps({
-    items: Array<{name:string, color:string}>,
+import {mdiPencil,mdiTrashCan} from '@mdi/js'
+const { projects }  = defineProps({
+    projects: Array<Project>
 })
+
+const onEditProject = (project:Project) => {
+    console.log(project)
+}
+const onDeleteProject = (project:Project) => {
+    console.log(project)
+}
+console.log(projects)
 
 </script>
 <template>
-<v-form>
-    <div v-for="item in items">
-        <v-row>
-            <v-text-field
-                v-model=item.name
+<v-table>
+    <thead>
+        <tr>
+            <th class="text-left">
+                案件名
+            </th>
+            <th class="text-left">
+                クライアント
+            </th>
+            <th class="text-left">
+                売上額
+            </th>
+            <th>
+            </th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr
+            v-for="project in projects"
+            :key="project.id"
             >
-            <prepend-icon>
-                <v-icon #prepend-icon :icon="mdiCircle" :color="item.color"></v-icon>
-            </prepend-icon>
-            </v-text-field>
-        </v-row>
-    </div>
-</v-form>
+            <td>{{project.name}}</td>
+            <td>{{project.client}}</td>
+            <td>{{project.sales}}</td>
+            <td class="text-right">
+                <div
+                    style="cursor: pointer"
+                    class="d-inline-block"
+                    @click="onEditProject(project)"
+                >
+                <v-icon :icon="mdiPencil"></v-icon>
+                </div>
+                <div
+                    class="d-inline-block"
+                    @click="onDeleteProject(project)"
+                >
+                <v-icon :icon="mdiTrashCan"></v-icon>
+                </div>
+            </td>
+        </tr>
+    </tbody>
+</v-table>
 </template>
