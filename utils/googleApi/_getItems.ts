@@ -1,35 +1,32 @@
-import { Ref } from 'vue'
-export const getEvents = async (token:string, calendarId:string) => {
+export const _getItems = async <T>(token:string, url:string) => {
     const repMax = 10;
-    const baseUrl = `https://www.googleapis.com/calendar/v3/calendars/`+unref(calendarId)+`/events?`
     const init = {
       method: 'GET',
       async: true,
       headers: {
-          Authorization: 'Bearer ' + unref(token),
+          Authorization: 'Bearer ' + token,
           'Content-Type': 'application/json'
       },
       'contentType': 'json'
     }
 
-    let events:Array<Event> = []
+    let items:Array<T> = []
     let query = new URLSearchParams({
         maxResults: "250",
     })
-    let url = baseUrl + query
     
     try{
         for(let i=0; i<repMax; i++){
-            let response = await fetch(baseUrl + query, init)
+            let response = await fetch(url + query, init)
             let result = await(response).json()
-            events = events.concat(result.items)
+            items = items.concat(result.items)
 
             if(result.nextPageToken) {
                 await new Promise(resolve => setTimeout(resolve, 100))
                 query = new URLSearchParams({
                     pageToken: result.nextPageToken,
                 })
-                url = baseUrl+query
+                url = url + query
             } else {
                 break;
             }
@@ -38,6 +35,6 @@ export const getEvents = async (token:string, calendarId:string) => {
 
     }
 
-    return events
+    return items
 
 }

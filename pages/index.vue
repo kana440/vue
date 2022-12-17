@@ -1,15 +1,20 @@
 <template>
   <v-app>
     <v-container>
-      <piniaTest/>
+      <v-btn @click="onAuth">auth</v-btn>
+      <v-btn @click="onChange"></v-btn>
     </v-container>
   </v-app>
 </template>
 
 <script lang="ts" setup>
-const { projects } = useMock()
-const onChange = ( updatedProject:Project ) => {
+import { googleApi } from '~~/utils/googleApi';
+const a = useMock()
+const onChange = ( ) => {
   console.log("oya")
-  console.log(updatedProject)
+  console.log(a.projectsMass)
+}
+const onAuth = () => {
+  googleApi.getToken()
 }
 </script>

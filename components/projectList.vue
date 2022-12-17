@@ -1,8 +1,9 @@
 <script lang="ts" setup>
 import {mdiPencil,mdiTrashCan} from '@mdi/js'
-const { projects }  = defineProps({
+const props  = defineProps({
     projects: Array<Project>
 })
+const projects = props.projects
 
 const onEditProject = (project:Project) => {
     console.log(project)
@@ -10,8 +11,9 @@ const onEditProject = (project:Project) => {
 const onDeleteProject = (project:Project) => {
     console.log(project)
 }
-console.log(projects)
-
+const onTest = () => {
+    console.log(props)
+}
 </script>
 <template>
 <v-table>
@@ -27,6 +29,7 @@ console.log(projects)
                 売上額
             </th>
             <th>
+                <v-btn @click="onTest"></v-btn>
             </th>
         </tr>
     </thead>

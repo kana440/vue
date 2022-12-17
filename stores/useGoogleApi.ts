@@ -1,6 +1,5 @@
 import { Ref, ref, unref, watchEffect } from 'vue'
-import { getEvents as _getEvents } from './getEvents'
-import { getToken as _getToken } from './getToken'
+import { googleApi } from '~/utils/googleApi'
 /** counterストア */
 export const useGoogleApi = defineStore('googleApi', <T>() => {
   const token = ref("")
@@ -10,12 +9,11 @@ export const useGoogleApi = defineStore('googleApi', <T>() => {
   const calendarId = ref("primary")
  
   async function getToken () {
-    token.value = await _getToken()
+    token.value = await googleApi.getToken()
   }
 
   async function getEvents() {
-    const events = _getEvents(token.value, calendarId.value)
-    console.log(await events)
+    const events = googleApi.getEvents(token.value, calendarId.value,{})
     return await events
   }
 

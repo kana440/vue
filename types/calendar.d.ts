@@ -1,0 +1,3 @@
+interface Calendar {
+    calendarId: string
+}
