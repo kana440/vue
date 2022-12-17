@@ -28,7 +28,7 @@ export default defineNuxtConfig({
         public:{
             client_id: process.env.CLIENT_ID,
             client_secret: process.env.CLIENT_SECRET,
-            redirect_rui: process.env.REDIRECT_URI,
+            redirect_uri: process.env.REDIRECT_URI,
             encryptKey: process.env.ENCRYPT_KEY,
         },
     },

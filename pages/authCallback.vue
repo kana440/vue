@@ -1,13 +1,17 @@
 <script lang="ts" setup>
+    import { useRoute } from 'vue-router';
+
+    const store = useGoogleApi()
     const { client_id, client_secret, redirect_uri } = useRuntimeConfig()
     const route = useRoute()
-    const params:{[key:string]: string} = {
-        authuser: typeof route.params.authuser == "string" ? route.params.authuser: 'array',
-        code: typeof route.params.code == "string" ? route.params.code: 'array',
-        hd: typeof route.params.hd == "string" ? route.params.hd: 'array',
-        prompt: typeof route.params.prompt == "string" ? route.params.prompt: 'array',
-        scope: typeof route.params.scope == "string" ? route.params.scope: 'array',
-        state: typeof route.params.state == "string" ? route.params.state: 'array',
+    const router = useRouter()
+
+    const params:{[key:string]:string} = {
+        authuser: route.query.code?.toString() || '',
+        code: route.query.code?.toString() || '',
+        hd: route.query.code?.toString() || '',
+        prompt: route.query.code?.toString() || '',
+        scope: route.query.scope?.toString() || '',
     }
 
     async function getToken() {
@@ -28,7 +32,14 @@
         }
         const response = await fetch(url, config)
         const result = await response.json()
+        store.$patch({token: result.access_token})
+        alert(result.access_token)
+        alert(store.token)
+        router.push('/')
         console.log(result)
+    }
+    function log () {
+        console.log(route.query)
     }
 
 </script>
@@ -36,6 +47,7 @@
     <div>
         redirected
         <div>{{params.code}}</div>
-        <v-btn @click="getToken"></v-btn>
+        <v-btn @click="getToken">getToken</v-btn>
+        <v-btn @click="log">log</v-btn>
     </div>
 </template>

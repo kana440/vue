@@ -9,7 +9,7 @@ export const useGoogleApi = defineStore('googleApi', <T>() => {
   const calendarId = ref("primary")
  
   async function getToken () {
-    token.value = await googleApi.getToken()
+  //  token.value = await googleApi.getToken()
   }
 
   async function getEvents() {
@@ -18,6 +18,7 @@ export const useGoogleApi = defineStore('googleApi', <T>() => {
   }
 
   return {
+    token,
     data,
     loading,
     error,
